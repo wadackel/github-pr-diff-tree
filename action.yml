@@ -1,11 +1,13 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'PR Diff Tree'
+description: 'This action provide a comment that displays the diff of the pull request in a tree format.'
+author: 'wadackel'
 inputs:
-  milliseconds: # change this
+  token:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: 'GITHUB_TOKEN as provided by secrets'
 runs:
   using: 'node12'
   main: 'dist/index.js'
+branding:
+  color: white
+  icon: git-pull-request

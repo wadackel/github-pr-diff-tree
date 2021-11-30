@@ -1,105 +1,53 @@
-<p align="center">
-  <a href="https://github.com/actions/typescript-action/actions"><img alt="typescript-action status" src="https://github.com/actions/typescript-action/workflows/build-test/badge.svg"></a>
-</p>
+# github-pr-diff-tree [![CI](https://github.com/wadackel/github-pr-diff-tree/actions/workflows/ci.yml/badge.svg)](https://github.com/wadackel/github-pr-diff-tree/actions/workflows/ci.yml)
 
-# Create a JavaScript Action using TypeScript
+![Screenshot](./screenshot.png)
 
-Use this template to bootstrap the creation of a TypeScript action.:rocket:
+:evergreen_tree: This action provide a comment that displays the diff of the pull request in a tree format.
 
-This template includes compilation support, tests, a validation workflow, publishing, and versioning guidance.  
+## Motivation
 
-If you are new, there's also a simpler introduction.  See the [Hello World JavaScript Action](https://github.com/actions/hello-world-javascript-action)
+When we develop a product, we make various changes to the code base. For example, add, remove, edit, and rename files.
 
-## Create an action from this template
+The code diffs can be seen on GitHub's excellent review page. However, the directory structure of the changed files is sometimes overlooked by reviewers.
 
-Click the `Use this Template` and provide the new repo details for your action
+Therefore, this Action was created with the goal of improving the accuracy of the review by visualizing the directory structure of diffs included in a pull request in a Human-Readable format.
 
-## Code in Main
+## Usage
 
-> First, you'll need to have a reasonably modern version of `node` handy. This won't work with versions older than 9, for instance.
+See [action.yml](./action.yml)
 
-Install the dependencies  
-```bash
-$ npm install
-```
-
-Build the typescript and package it for distribution
-```bash
-$ npm run build && npm run package
-```
-
-Run the tests :heavy_check_mark:  
-```bash
-$ npm test
-
- PASS  ./index.test.js
-  ✓ throws invalid number (3ms)
-  ✓ wait 500 ms (504ms)
-  ✓ test runs (95ms)
-
-...
-```
-
-## Change action.yml
-
-The action.yml defines the inputs and output for your action.
-
-Update the action.yml with your name, description, inputs and outputs for your action.
-
-See the [documentation](https://help.github.com/en/articles/metadata-syntax-for-github-actions)
-
-## Change the Code
-
-Most toolkit and CI/CD operations involve async operations so the action is run in an async function.
-
-```javascript
-import * as core from '@actions/core';
-...
-
-async function run() {
-  try { 
-      ...
-  } 
-  catch (error) {
-    core.setFailed(error.message);
-  }
-}
-
-run()
-```
-
-See the [toolkit documentation](https://github.com/actions/toolkit/blob/master/README.md#packages) for the various packages.
-
-## Publish to a distribution branch
-
-Actions are run from GitHub repos so we will checkin the packed dist folder. 
-
-Then run [ncc](https://github.com/zeit/ncc) and push the results:
-```bash
-$ npm run package
-$ git add dist
-$ git commit -a -m "prod dependencies"
-$ git push origin releases/v1
-```
-
-Note: We recommend using the `--license` option for ncc, which will create a license file for all of the production node modules used in your project.
-
-Your action is now published! :rocket: 
-
-See the [versioning documentation](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md)
-
-## Validate
-
-You can now validate the action by referencing `./` in a workflow in your repo (see [test.yml](.github/workflows/test.yml))
+**Basic:**
 
 ```yaml
-uses: ./
-with:
-  milliseconds: 1000
+# .github/workflows/pr-diff-tree.yml
+name: 'PR Diff Tree'
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: wadackel/github-pr-diff-tree@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-See the [actions tab](https://github.com/actions/typescript-action/actions) for runs of this action! :rocket:
+## Contributing
 
-## Usage:
+We are always welcoming your contribution :clap:
 
-After testing you can [create a v1 tag](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md) to reference the stable and latest V1 action
+1. Fork (https://github.com/wadackel/github-pr-diff-tree) :tada:
+1. Create a feature branch :coffee:
+1. Run test suite with the `$ npm test` command and confirm that it passes :zap:
+1. Commit your changes :memo:
+1. Rebase your local changes against the `main` branch :bulb:
+1. Create new Pull Request :love_letter:
+
+Bugs, feature requests and comments are more than welcome in the [issues](https://github.com/wadackel/github-pr-diff-tree/issues).
+
+## License
+
+[MIT © wadackel](./LICENSE)

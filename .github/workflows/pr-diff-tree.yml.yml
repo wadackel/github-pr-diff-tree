@@ -1,0 +1,14 @@
+name: 'PR Diff Tree'
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
