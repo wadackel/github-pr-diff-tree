@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@octokit/webhooks": "9.20.0",
-    "@types/node": "16.11.10",
+    "@types/node": "16.11.11",
     "@typescript-eslint/parser": "5.4.0",
     "@vercel/ncc": "0.32.0",
     "eslint": "8.3.0",
