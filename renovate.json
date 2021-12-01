@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "config:js-app",
+    ":semanticCommits",
+    ":semanticCommitTypeAll(update)",
+    ":semanticCommitScopeDisabled"
+  ],
+  "stabilityDays": 3
+}
