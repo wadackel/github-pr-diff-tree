@@ -100,7 +100,6 @@ export const parse = (input: string): File[] => {
             file.type = 'deleted'
             file.from = normalize(a)
           } else {
-            file.type = 'modified'
             file.from = normalize(a)
             file.to = normalize(b)
           }
