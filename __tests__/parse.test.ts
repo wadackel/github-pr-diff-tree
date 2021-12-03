@@ -45,9 +45,23 @@ index 0000000..c0dafd8
 +in
 +file2
 diff --git a/oldname2 b/newname2
+similarity index 99%
+rename from a/oldname2
+rename to b/newname2
+index 0000000..c0dafd8
+--- a/oldname2
++++ b/newname2
+@@ -1,4 +1,4 @@
++add a line
+ some
+ lines
+ in
+-oldname2
++newname2
+diff --git a/oldname3 b/newname3
 similarity index 100%
-rename from oldname2
-rename to newname2
+rename from a/oldname3
+rename to b/newname3
 `)
   ).toEqual([
     {
@@ -79,6 +93,14 @@ rename to newname2
       binary: false,
       from: 'oldname2',
       to: 'newname2',
+      additions: 2,
+      deletions: 1
+    },
+    {
+      type: 'renamed',
+      binary: false,
+      from: 'oldname3',
+      to: 'newname3',
       additions: 0,
       deletions: 0
     }
