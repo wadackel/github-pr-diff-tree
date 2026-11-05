@@ -5,7 +5,7 @@ version: 'v0.0.3'
 workflows:
     '.github/workflows/check-dist.yml':
         - 'actions/checkout@v2.8.0'
-        - 'actions/setup-node@v2.5.1'
+        - 'actions/setup-node@v2.5.2'
         - 'actions/upload-artifact@v2.3.1'
     '.github/workflows/ci.yml':
         - 'actions/checkout@v2.8.0'
@@ -24,9 +24,9 @@ dependencies:
         commit: 'sha1-3d3c42e5aac5ba805825da76410c181273ba90b1'
         owner_id: 44036562
         repo_id: 197814629
-    'actions/setup-node@v2.5.1':
-        ref: 'v2.5.1'
-        commit: 'sha1-1f8c6b94b26d0feae1e387ca63ccbdc44d27b561'
+    'actions/setup-node@v2.5.2':
+        ref: 'v2.5.2'
+        commit: 'sha1-7c12f8017d5436eb855f1ed4399f037a36fbd9e8'
         owner_id: 44036562
         repo_id: 189476904
     'actions/upload-artifact@v2.3.1':
